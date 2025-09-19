@@ -1,11 +1,11 @@
-import sys
-sys.path.insert(0, r"./src")
+import pytest
 
-import textanalysis_tool
+from textanalysis_tool.say_hello import hello
 
-result = textanalysis_tool.hello("My Name")
 
-if result == "Hello, My Name!":
-    print("Test Passed!")
-else:
-    print("Test Failed")
+def test_hello():
+    assert hello("My Name") == "Hello, My Name!"
+
+def test_hello_empty_string():
+    with pytest.raises(ValueError):
+        hello("")
